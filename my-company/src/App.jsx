@@ -1,4 +1,4 @@
-import NavBar from './NavBar';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import React from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Outlet } from 'react-router-dom';
@@ -21,7 +21,7 @@ export const router = createBrowserRouter(createRoutesFromElements(
 function App() {
   return (
     <>
-      <NavBar />
+      <Navbar />
       <Outlet />
       <Footer />
     </>
