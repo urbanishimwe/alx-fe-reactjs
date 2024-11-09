@@ -2,7 +2,7 @@ import { useContext  } from "react";
 import UserContext from "./UserContext";
 
 
-function UserDetails() {
+function UserProfile() {
     const userData = useContext(UserContext);
     console.log(userData);
     return (
@@ -13,4 +13,4 @@ function UserDetails() {
     );
   }
   
-  export default UserDetails;
+  export default UserProfile;
