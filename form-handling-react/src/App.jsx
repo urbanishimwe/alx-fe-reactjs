@@ -1,4 +1,4 @@
-import RegistrationForm from './components/formikForm'
+import RegistrationForm from './components/FormikForm'
 import './App.css'
 
 function App() {
