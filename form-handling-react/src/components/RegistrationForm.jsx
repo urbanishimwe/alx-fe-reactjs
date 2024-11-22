@@ -1,32 +1,38 @@
-import { Formik, Form, Field, ErrorMessage  } from 'formik';
-import * as Yup from 'yup';
+import { useState } from 'react';
 
-const validationSchema = Yup.object({
-    name: Yup.string().required('Name is required'),
-    email: Yup.string().email('Invalid email').required('Email is required'),
-    password: Yup.string().min(8, 'Password should be at least 8 min').required('Password is reuiqred'),
-});
+const ControlledForm = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-const RegistrationForm = () => (
-    <Formik
-        initialValues={{ name: '', email: '', password: '' }}
-        validationSchema={validationSchema}
-        onSubmit={(values) => {
-            console.log(values);
-        }}
-    >
-        {() => (
-            <Form>
-                <Field type="text" name="name" />
-                <ErrorMessage name="name" component="div" />
-                <Field type="email" name="email" />
-                <ErrorMessage name="email" component="div" />
-                <Field type="password" name="password" />
-                <ErrorMessage name="password" component="div" />
-                <button type="submit">Submit</button>
-            </Form>
-        )}
-    </Formik>
-);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(name, email, password);
+    };
 
-export default RegistrationForm;
+    return (
+        <form onSubmit={handleSubmit}>
+            <input
+                type="text"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
+            <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+             <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Submit</button>
+        </form>
+    );
+};
+
+export default ControlledForm;
