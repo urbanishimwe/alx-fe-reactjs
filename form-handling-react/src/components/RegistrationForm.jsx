@@ -7,8 +7,23 @@ const ControlledForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        var errors = [];
+        if(!username) {
+            errors.push("username is required")
+        }
+        if(!email) {
+            errors.push("email is required")
+        }
+        if(!password) {
+            errors.push("password is required")
+        }
+        setErrors(errors)
         console.log(username, email, password);
     };
+
+    const setErrors = (errors) => {
+        document.getElementById("errors").innerHTML = errors.join("<br/>")
+    }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -30,6 +45,7 @@ const ControlledForm = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
+            <p id="errors"> </p>
             <button type="submit">Submit</button>
         </form>
     );
