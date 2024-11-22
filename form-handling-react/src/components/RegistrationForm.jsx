@@ -8,13 +8,13 @@ const ControlledForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         var errors = [];
-        if(!username) {
+        if (!username) {
             errors.push("username is required")
         }
-        if(!email) {
+        if (!email) {
             errors.push("email is required")
         }
-        if(!password) {
+        if (!password) {
             errors.push("password is required")
         }
         setErrors(errors)
