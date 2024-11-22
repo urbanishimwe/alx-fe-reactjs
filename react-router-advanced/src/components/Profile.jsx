@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Routes , Route, Link } from 'react-router-dom'
 import ProfileDetails from './ProfileDetails';
 import ProfileSettings from './ProfileSettings';
 
 const Profile = () => {
     return (
-        <Router>
+        <Routes>
             <div>
                 {/* Route to Dashboard component */}
                 <Route path="/profile/details" component={ProfileDetails} />
@@ -15,7 +15,7 @@ const Profile = () => {
                     <Link to="/profile/settings"> Profile Settings </Link>
                 </Route>
             </div>
-        </Router>
+        </Routes>
     )
 };
 
