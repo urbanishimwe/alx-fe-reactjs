@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
 const ControlledForm = () => {
-    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(name, email, password);
+        console.log(username, email, password);
     };
 
     return (
@@ -15,8 +15,8 @@ const ControlledForm = () => {
             <input
                 type="text"
                 name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
             />
             <input
                 type="email"
