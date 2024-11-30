@@ -1,6 +1,6 @@
 import './App.css'
 import { Routes, Route, Outlet, NavLink } from 'react-router-dom';
-import { useNavigate } from 'react-router';
+import { BrowserRouter, useNavigate } from 'react-router';
 import Profile from './components/Profile';
 import BlogPost from './components/Blog';
 import ProfileDetails from './components/ProfileDetails';
@@ -39,14 +39,16 @@ const ProtectedRoutes = () => {
       </Route>
     )
   }
-  return <Route path="/" element={<Login/>} />
+  return <Route path="/" element={<Login />} />
 }
 
 const RouteList = () => {
   return (
-    <Routes>
-      {ProtectedRoutes()}
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        {ProtectedRoutes()}
+      </Routes>
+    </BrowserRouter>
   )
 }
 
