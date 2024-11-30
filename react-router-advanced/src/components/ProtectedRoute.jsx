@@ -1,4 +1,3 @@
-import BlogPost from "./Blog"
 import { ProfileRoutes } from "./Profile";
 import { Route, useNavigate, NavLink, Outlet } from "react-router-dom";
 
@@ -27,7 +26,6 @@ const ProtectedRoute = () => {
     if (isAuthenticated()) {
         return (
             <Route path="/" element={<Header />}>
-                <Route path="/blog/:id" element={<BlogPost />} />
                 {ProfileRoutes()}
             </Route>
         )

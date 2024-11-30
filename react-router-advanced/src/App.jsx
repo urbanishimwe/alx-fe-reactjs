@@ -1,6 +1,7 @@
 import './App.css'
-import { Routes, BrowserRouter} from 'react-router-dom';
+import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
+import BlogPost from "./components/Blog"
 
 
 
@@ -9,6 +10,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         {ProtectedRoute()}
+        <Route path="/blog/:id" element={<BlogPost />} />
       </Routes>
     </BrowserRouter>
   )
