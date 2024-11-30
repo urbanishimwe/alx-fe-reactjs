@@ -1,10 +1,10 @@
 import './App.css'
 import { Routes, Route, Outlet, NavLink } from 'react-router-dom';
 import { BrowserRouter, useNavigate } from 'react-router';
-import Profile from './components/Profile';
+import { ProfileRoutes } from './components/Profile';
 import BlogPost from './components/Blog';
-import ProfileDetails from './components/ProfileDetails';
-import ProfileSettings from './components/ProfileSettings';
+// import ProfileDetails from './components/ProfileDetails';
+// import ProfileSettings from './components/ProfileSettings';
 
 const isAuthenticated = () => {
   return localStorage.getItem('authToken') !== null;
@@ -32,10 +32,7 @@ const ProtectedRoutes = () => {
     return (
       <Route path="/" element={<App />}>
         <Route path="/blog/:id" element={BlogPost()} />
-        <Route path='/profile' element={<Profile />}>
-          <Route path="/profile/details" element={ProfileDetails()} />
-          <Route path="/profile/settings" element={ProfileSettings()} />
-        </Route>
+        {ProfileRoutes()}
       </Route>
     )
   }
