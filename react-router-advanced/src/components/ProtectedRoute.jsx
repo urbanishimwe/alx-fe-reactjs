@@ -18,12 +18,12 @@ const Login = () => {
     return <button onClick={handleLogin}>Login</button>
 };
 
-const isAuthenticated = () => {
+const useAuth = () => {
     return localStorage.getItem('authToken') !== null;
 };
 
 const ProtectedRoute = () => {
-    if (isAuthenticated()) {
+    if (useAuth()) {
         return (
             <Route path="/" element={<Header />}>
                 {ProfileRoutes()}
