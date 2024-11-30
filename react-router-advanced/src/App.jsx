@@ -1,48 +1,54 @@
 import './App.css'
-import { Route, Navigate as Redirect, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { Routes, Route, Outlet, NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import Profile from './components/Profile';
+import BlogPost from './components/Blog';
+import ProfileDetails from './components/ProfileDetails';
+import ProfileSettings from './components/ProfileSettings';
 
 const isAuthenticated = () => {
   return localStorage.getItem('authToken') !== null;
 };
 
 const Login = () => {
+  const useRedirect = useNavigate();
   const handleLogin = () => {
     localStorage.setItem('authToken', 'your-token');
-    window.location.href = '/profile';
+    useRedirect("/");
   };
-
-  return <button onClick={handleLogin}>Login</button>;
+  return <button onClick={handleLogin}>Login</button>
 };
 
-// // Custom Route component that checks for authentication
-// const PrivateRoute = ({ component: Component, ...rest }) => (
-//   <Route
-//     {...rest}
-//     render={props =>
-//       isAuthenticated() ? (
-//         // If authenticated, render the component
-//         <Component {...props} />
-//       ) : (
-//         // If not authenticated, redirect to the login page
-//         <Redirect to="/login" />
-//       )
-//     }
-//   />
-// );
+const App = () => {
+  return (<>
+    <h1> App Home </h1>
+    <NavLink to="/profile"> Visit profile </NavLink>
+    <Outlet />
+  </>)
+};
 
-export const Router = createBrowserRouter(createRoutesFromElements(
-  <Route path='/'>
-    <Route path='/'
-      component={() => isAuthenticated() ? (<Profile />) : (<Redirect to="/login" />)}
-    />
-    <Route path="/login" component={Login} />
-  </Route>
-));
+const ProtectedRoutes = () => {
+  if (isAuthenticated()) {
+    return (
+      <Route path="/" element={<App />}>
+        <Route path="/blog/:id" element={BlogPost()} />
+        <Route path='/profile' element={<Profile />}>
+          <Route path="/profile/details" element={ProfileDetails()} />
+          <Route path="/profile/settings" element={ProfileSettings()} />
+        </Route>
+      </Route>
+    )
+  }
+  return <Route path="/" element={<Login/>} />
+}
 
-const App = () => (
-  <Router />
-);
+const RouteList = () => {
+  return (
+    <Routes>
+      {ProtectedRoutes()}
+    </Routes>
+  )
+}
 
 
-export default App;
+export default RouteList;

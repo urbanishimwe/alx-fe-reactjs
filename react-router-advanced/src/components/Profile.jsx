@@ -1,22 +1,12 @@
-import { BrowserRouter as Routes , Route, Link } from 'react-router-dom'
-import ProfileDetails from './ProfileDetails';
-import ProfileSettings from './ProfileSettings';
+import { NavLink, Outlet } from 'react-router-dom'
 
-const Profile = () => {
-    return (
-        <Routes>
-            <div>
-                {/* Route to Dashboard component */}
-                <Route path="/profile/details" component={ProfileDetails} />
-                <Route path="/profile/settings" component={ProfileSettings} />
-                {/* Default route to Home component */}
-                <Route path="/">
-                    <Link to="/profile/details"> Profile Details </Link> <br/>
-                    <Link to="/profile/settings"> Profile Settings </Link>
-                </Route>
-            </div>
-        </Routes>
-    )
-};
+const Profile = () => (
+    <>
+        <h1> Profile main page </h1>
+        <NavLink to="/profile/details"> Profile Details </NavLink> <br />
+        <NavLink to="/profile/settings"> Profile Settings </NavLink>
+        <Outlet />
+    </>
+)
 
 export default Profile;
