@@ -1,10 +1,12 @@
-// import { useState } from 'react';
+import { useEffect } from 'react';
 import recipesList from '../data.json'
+import { useParams } from 'react-router-dom';
 
 const RecipeDetail = () => {
-    const id = parseInt(window.location.pathname.split('/')[2]);
+    const id = parseInt(useParams().id);
 
     const recipe = recipesList.find(e => e.id === id);
+    useEffect(() => {}, [])
     if (!recipe) {
         return <h1> Not found </h1>
     }
