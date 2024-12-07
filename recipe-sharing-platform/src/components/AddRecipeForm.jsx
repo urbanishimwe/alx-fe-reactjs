@@ -42,7 +42,7 @@ const AddRecipeForm = () => {
     }
 
     return (
-        <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
+        <form className="mx-auto md:max-w-sm shadow-lg my-20 hover:shadow-xl" onSubmit={handleSubmit}>
             <ul className="list-disc" id="validate"> {errors.map((e, i) => <li key={i} className="text-red-600">{e}</li>)}</ul>
             <div className="mb-5">
                 <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
