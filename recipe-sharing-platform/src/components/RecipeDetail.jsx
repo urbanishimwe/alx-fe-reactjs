@@ -16,8 +16,8 @@ const RecipeDetail = () => {
             <img src={recipe.image} className="rounded-full md:w-36 md:h-36 sm:w-24 sm:h-24 mx-auto hover:scale-110 transition-transform duration-300 ease-in-out" alt="User" />
             <h1 className="md:text-xl sm:text-lg text-blue-800 my-4"> {recipe.title} </h1>
             <p className="text-gray-600 md:text-base sm:text-sm hover:text-blue-500"> {recipe.summary} </p>
-            <ul className='list-disc'>{recipe.ingredients.map((e, i) => <li key={i}> {e} </li>)}</ul>
-            <p className="text-gray-600 md:text-base sm:text-sm hover:text-blue-500"> {recipe.instructions} </p>
+            <ul className='list-disc font-thin text-gray-600 md:text-base sm:text-sm'>{recipe.ingredients.map((e, i) => <li key={i}> {e} </li>)}</ul>
+            <p className="text-gray-600 md:text-base sm:text-sm"> {recipe.instructions} </p>
         </div>
     )
 }
