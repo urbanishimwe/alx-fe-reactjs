@@ -1,10 +1,10 @@
-import HelloWorld from "./components/HelloWorld"
+import Search from "./components/Search"
 
 function App() {
 
   return (
     <>
-    <HelloWorld/>
+    <Search/>
     </>
   )
 }
